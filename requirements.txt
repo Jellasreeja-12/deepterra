@@ -1,6 +1,8 @@
-pandas
 numpy
+pandas
 scikit-learn
+matplotlib
+tensorflow
 streamlit
 shap
-matplotlib
+protobuf==3.20.3
