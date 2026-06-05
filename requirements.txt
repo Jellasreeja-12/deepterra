@@ -1,8 +1,7 @@
+streamlit
 numpy
 pandas
 scikit-learn
 matplotlib
-tensorflow
-streamlit
-shap
-protobuf==3.20.3
+tensorflow==2.15.0
+shap==0.44.1
