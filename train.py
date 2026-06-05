@@ -76,11 +76,16 @@ majority_down = majority.sample(TARGET, random_state=42)
 minority_up = resample(minority, replace=True,
                        n_samples=TARGET, random_state=42)
 
-df_bal = pd.concat([majority_down, minority_up]
-                   ).sample(frac=1, random_state=42)
+df_bal = pd.concat([majority_down, minority_up]).sample(
+    frac=1, random_state=42).reset_index(drop=True)
+print(
+    f"   After balancing — Safe: {(df_bal['label']==0).sum()} | Risk: {(df_bal['label']==1).sum()}")
 
 X_bal = df_bal[feature_cols].values
 y_bal = df_bal['label'].values
+
+print(
+    f"   After balancing — Safe: {(y_bal==0).sum()} | Risk: {(y_bal==1).sum()}")
 
 print(
     f"   After balancing — Safe: {(y_bal==0).sum()} | Risk: {(y_bal==1).sum()}")
@@ -166,9 +171,15 @@ print("="*40)
 
 # ── CONFUSION MATRIX ──────────────────────────────────────
 cm = confusion_matrix(y_test, y_pred)
-
+print(f"Confusion Matrix:")
+print(f"  True Negatives  (correctly Safe):     {cm[0][0]}")
+print(f"  False Positives (false alarm):         {cm[0][1]}")
+print(f"  False Negatives (missed risk!):        {cm[1][0]}")
+print(f"  True Positives  (correctly detected):  {cm[1][1]}")
+# ── SAVE CONFUSION MATRIX IMAGE ───────────────────────────
 plt.figure(figsize=(6, 5))
-plt.imshow(cm)
+
+plt.imshow(cm, interpolation='nearest')
 plt.title("Confusion Matrix")
 plt.colorbar()
 
