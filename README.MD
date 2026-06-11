@@ -1,6 +1,6 @@
 # 🏔️ DeepTerra — Explainable AI-Based Landslide Risk Prediction & Early Warning System
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepterra-isz9tmmyqspddym4rww4fu.streamlit.app/)
+[![Streamlit App]]
 
 > **Live App:** https://deepterra-isz9tmmyqspddym4rww4fu.streamlit.app/
 
